@@ -6,7 +6,7 @@ import "./globals.css";
 const bebasNeue = localFont({
   src: [
     {
-      path: "./fonts/BebasNeue-Regular.ttf",
+      path: "/fonts/BebasNeue-Regular.ttf",
       weight: "400",
       style: "normal",
     },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${ibmPlexSams.className} ${bebasNeue.variable} antialiased`}
       >
