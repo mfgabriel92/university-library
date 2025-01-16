@@ -1,12 +1,11 @@
 import { PropsWithChildren } from "react";
+import { Header } from "@/components";
 
 export default function MainLayout({ children }: PropsWithChildren) {
   return (
     <main className="root-container">
-      <div className="mx-auto max-w-7xl">
-        Header
-        <div className="mt-20 pb-20">{children}</div>
-      </div>
+      <Header />
+      <div className="mt-20 pb-20">{children}</div>
     </main>
   );
 }
