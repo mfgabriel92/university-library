@@ -9,7 +9,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="mx-auto my-10 flex w-full max-w-7xl justify-between gap-5">
+    <header className="container mx-auto my-10 flex justify-between gap-5">
       <Link href="/" className="text-white">
         <Image src="/logo.png" width={80} height={80} alt="Logo" />
       </Link>

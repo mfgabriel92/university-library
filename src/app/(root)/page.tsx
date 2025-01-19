@@ -1,5 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { BookList, BookOverview } from "@/components";
+import { sampleBooks } from "@/constants";
 
 export default function HomePage() {
-  return <Button>Button</Button>;
+  return (
+    <main className="mx-auto max-w-7xl">
+      <BookOverview book={sampleBooks[0]} />
+      <BookList books={sampleBooks} />
+    </main>
+  );
 }
