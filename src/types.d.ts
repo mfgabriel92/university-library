@@ -35,7 +35,7 @@ export type BookCoverVariants =
   | "wide";
 
 export interface FieldNames {
-  fullname: string;
+  name: string;
   email: string;
   universityId: string;
   password: string;
