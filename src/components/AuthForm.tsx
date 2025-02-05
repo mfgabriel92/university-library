@@ -68,7 +68,7 @@ export function AuthForm<T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <UploadFileInput />
+                      <UploadFileInput onFileChange={field.onChange} />
                     ) : (
                       <Input
                         {...field}
