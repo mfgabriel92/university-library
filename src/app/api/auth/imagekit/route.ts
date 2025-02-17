@@ -10,6 +10,6 @@ const imagekit = new ImageKit({
   urlEndpoint,
 });
 
-export async function GET() {
+export const GET = async () => {
   return NextResponse.json(imagekit.getAuthenticationParameters());
-}
+};

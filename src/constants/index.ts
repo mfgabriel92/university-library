@@ -54,15 +54,15 @@ export const adminSideBarLinks: AdminSideBarLink[] = [
 export const fieldNames: FieldNames = {
   name: "Name",
   email: "Email",
-  universityId: "University ID Number",
+  universityId: 1,
   password: "Password",
   universityCard: "Upload University ID Card",
 };
 
 export const fieldTypes: FieldTypes = {
-  fullname: "text",
+  name: "text",
   email: "email",
-  universityId: "number",
+  universityId: 1,
   password: "password",
 };
 

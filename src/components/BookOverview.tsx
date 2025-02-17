@@ -3,7 +3,7 @@ import { Book } from "@/types";
 import { Button } from "@/components/ui/button";
 import { BookCover } from "@/components/BookCover";
 
-export function BookOverview({ book }: { book: Book }) {
+const BookOverview = ({ book }: { book: Book }) => {
   const {
     title,
     author,
@@ -23,12 +23,12 @@ export function BookOverview({ book }: { book: Book }) {
 
         <div className="book-info">
           <p>
-            By <span className="font-semibold text-light-200">{author}</span>
+            By <span className="text-light-200 font-semibold">{author}</span>
           </p>
 
           <p>
             Category{" "}
-            <span className="font-semibold text-light-200">{genre}</span>
+            <span className="text-light-200 font-semibold">{genre}</span>
           </p>
 
           <div className="flex gap-1">
@@ -50,7 +50,7 @@ export function BookOverview({ book }: { book: Book }) {
 
           <Button className="book-overview_btn">
             <Image src="/icons/book.svg" alt="book" width={20} height={20} />
-            <p className="font-bebas-neue text-xl text-dark-100">Borrow</p>
+            <p className="font-bebas-neue text-dark-100 text-xl">Borrow</p>
           </Button>
         </div>
       </div>
@@ -64,7 +64,7 @@ export function BookOverview({ book }: { book: Book }) {
             coverUrl={coverUrl}
           />
 
-          <div className="absolute left-0 top-3 rotate-12 opacity-40 sm:left-16 sm:top-10">
+          <div className="absolute top-3 left-0 rotate-12 opacity-40 sm:top-10 sm:left-16">
             <BookCover
               variant={"wide"}
               coverColor={coverColor}
@@ -75,4 +75,6 @@ export function BookOverview({ book }: { book: Book }) {
       </div>
     </section>
   );
-}
+};
+
+export { BookOverview };

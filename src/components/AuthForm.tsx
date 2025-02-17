@@ -1,6 +1,8 @@
 "use client";
 
+import { HTMLInputTypeAttribute } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { fieldNames, fieldTypes } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -11,6 +13,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ZodType } from "zod";
+import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -27,35 +30,57 @@ interface AuthFormProps<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
   schema: ZodType<T>;
   defaultValues: T;
-  onSubmit: (data: T) => Promise<{ success: boolean; error?: string }>;
+  onSubmit: (
+    data: T,
+  ) => Promise<{ success: boolean; error?: string | unknown }>;
 }
 
-export function AuthForm<T extends FieldValues>({
+const AuthForm = <T extends FieldValues>({
   type,
   schema,
   defaultValues,
   onSubmit,
-}: AuthFormProps<T>) {
+}: AuthFormProps<T>) => {
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
+  const router = useRouter();
+  const isSignIn = type === "SIGN_IN";
 
   async function handleOnSubmit(data: T) {
-    onSubmit(data);
+    const result = await onSubmit(data);
+
+    if (result.success) {
+      toast({
+        title: "Success",
+        description: `You have successfully signed ${isSignIn ? "in" : "out"}`,
+      });
+
+      return router.push("/");
+    }
+
+    toast({
+      title: `Error signing ${isSignIn ? "in" : "out"}`,
+      description: String(result?.error ?? "An error occurred"),
+      variant: "destructive",
+    });
   }
 
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-center text-2xl font-semibold text-white">
-        {type === "SIGN_IN" ? "Sign In" : "Sign Up"}
+        {isSignIn ? "Sign In" : "Sign Up"}
       </h1>
-      <p className="text-center text-light-100">
-        {type === "SIGN_IN" ? "Sign-in to continue" : "Sign-up to get started"}
+      <p className="text-light-100 text-center">
+        {isSignIn ? "Sign-in to continue" : "Sign-up to get started"}
       </p>
 
       <Form {...form}>
-        <form action={handleOnSubmit} className="flex flex-col gap-4">
+        <form
+          onSubmit={form.handleSubmit(handleOnSubmit)}
+          className="flex flex-col gap-4"
+        >
           {Object.keys(defaultValues).map((field) => (
             <FormField
               key={field}
@@ -72,7 +97,11 @@ export function AuthForm<T extends FieldValues>({
                     ) : (
                       <Input
                         {...field}
-                        type={fieldTypes[field.name as keyof typeof fieldTypes]}
+                        type={
+                          fieldTypes[
+                            field.name as keyof typeof fieldTypes
+                          ] as HTMLInputTypeAttribute
+                        }
                         className="form-input"
                       />
                     )}
@@ -83,22 +112,24 @@ export function AuthForm<T extends FieldValues>({
             />
           ))}
           <Button type="submit" className="mt-4 self-center text-black">
-            {type === "SIGN_IN" ? "Sign In" : "Sign Up"}
+            {isSignIn ? "Sign In" : "Sign Up"}
           </Button>
         </form>
       </Form>
 
       <p className="text-center text-base font-medium">
-        {type === "SIGN_IN"
+        {isSignIn
           ? "New to University Library? "
           : "I Already have an account "}
         <Link
-          href={type === "SIGN_IN" ? "/sign-up" : "/sign-in"}
-          className="font-bold text-primary"
+          href={isSignIn ? "/sign-up" : "/sign-in"}
+          className="text-primary font-bold"
         >
-          {type === "SIGN_IN" ? "Sign Up" : "Sign In"}
+          {isSignIn ? "Sign Up" : "Sign In"}
         </Link>
       </p>
     </div>
   );
-}
+};
+
+export { AuthForm };

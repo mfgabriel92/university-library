@@ -1,9 +1,10 @@
 "use client";
 
 import { AuthForm } from "@/components";
+import { signUp } from "@/lib/actions/auth";
 import { signUpSchema } from "@/lib/validations";
 
-export default function SignUpPage() {
+const SignUpPage = () => {
   return (
     <AuthForm
       type="SIGN_UP"
@@ -11,11 +12,13 @@ export default function SignUpPage() {
       defaultValues={{
         name: "",
         email: "",
-        universityCard: "",
-        universityId: 0,
         password: "",
+        universityId: 0,
+        universityCard: "",
       }}
-      onSubmit={() => {}}
+      onSubmit={signUp}
     />
   );
-}
+};
+
+export default SignUpPage;

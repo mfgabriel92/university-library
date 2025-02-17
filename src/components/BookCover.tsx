@@ -18,12 +18,12 @@ const variants: Record<BookCoverVariants, string> = {
   wide: "book-cover_wide",
 };
 
-export function BookCover({
+const BookCover = ({
   variant = "regular",
   coverColor = "#012b48",
   coverUrl = "https://placehold.co/400x600.png",
   className,
-}: BookCoverProps) {
+}: BookCoverProps) => {
   return (
     <div
       className={cn(
@@ -44,4 +44,6 @@ export function BookCover({
       </div>
     </div>
   );
-}
+};
+
+export { BookCover };

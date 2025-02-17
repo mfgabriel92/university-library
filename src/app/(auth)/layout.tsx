@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import Image from "next/image";
 
-export default function AuthLayout({ children }: PropsWithChildren) {
+const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
     <main className="auth-container">
       <section className="auth-form">
@@ -28,4 +28,6 @@ export default function AuthLayout({ children }: PropsWithChildren) {
       </section>
     </main>
   );
-}
+};
+
+export default AuthLayout;

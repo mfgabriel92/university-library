@@ -7,10 +7,10 @@ interface BookListProps {
   containerClassName?: string;
 }
 
-export function BookList({ books, containerClassName }: BookListProps) {
+const BookList = ({ books, containerClassName }: BookListProps) => {
   return (
     <section className={cn("mt-40", containerClassName)}>
-      <h2 className="font-bebas-neue text-4xl text-light-100">Popular Books</h2>
+      <h2 className="font-bebas-neue text-light-100 text-4xl">Popular Books</h2>
       <ul className="book-list">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
@@ -18,4 +18,6 @@ export function BookList({ books, containerClassName }: BookListProps) {
       </ul>
     </section>
   );
-}
+};
+
+export { BookList };

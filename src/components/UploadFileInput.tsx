@@ -39,7 +39,7 @@ interface UploadFileInputProps {
   onFileChange: (filePath: string) => void;
 }
 
-export function UploadFileInput({ onFileChange }: UploadFileInputProps) {
+const UploadFileInput = ({ onFileChange }: UploadFileInputProps) => {
   const ref = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<IKUploadResponse | null>(null);
 
@@ -90,7 +90,7 @@ export function UploadFileInput({ onFileChange }: UploadFileInputProps) {
           alt="upload"
           className="object-contain"
         />
-        <p className="text-base text-light-100">Upload a file</p>
+        <p className="text-light-100 text-base">Upload a file</p>
 
         {file && (
           <>
@@ -101,4 +101,6 @@ export function UploadFileInput({ onFileChange }: UploadFileInputProps) {
       </button>
     </ImageKitProvider>
   );
-}
+};
+
+export { UploadFileInput };

@@ -1,3 +1,11 @@
+export interface AuthCredentials {
+  name: string;
+  email: string;
+  password: string;
+  universityId: number;
+  universityCard: string;
+}
+
 export interface AdminSideBarLink {
   img: string;
   route: string;
@@ -37,15 +45,15 @@ export type BookCoverVariants =
 export interface FieldNames {
   name: string;
   email: string;
-  universityId: string;
   password: string;
+  universityId: number;
   universityCard: string;
 }
 
 export interface FieldTypes {
-  fullname: string;
+  name: string;
   email: string;
-  universityId: string;
+  universityId: number;
   password: string;
 }
 

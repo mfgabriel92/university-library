@@ -9,9 +9,9 @@ interface BookCardProps {
   book: Book;
 }
 
-export function BookCard({ book }: BookCardProps) {
+const BookCard = ({ book }: BookCardProps) => {
   return (
-    <li className={cn({ "flex w-full xs:w-52": book.isLoaned })}>
+    <li className={cn({ "xs:w-52 flex w-full": book.isLoaned })}>
       <Link
         href={`/books/${book.id}`}
         className={cn("flex flex-col items-center", {
@@ -25,8 +25,8 @@ export function BookCard({ book }: BookCardProps) {
         />
 
         <div
-          className={cn("mb-4 mt-4", {
-            "max-w-28 xs:max-w-40": !book.isLoaned,
+          className={cn("mt-4 mb-4", {
+            "xs:max-w-40 max-w-28": !book.isLoaned,
           })}
         >
           <p className="book-title">{book.title}</p>
@@ -51,4 +51,6 @@ export function BookCard({ book }: BookCardProps) {
       </Link>
     </li>
   );
-}
+};
+
+export { BookCard };

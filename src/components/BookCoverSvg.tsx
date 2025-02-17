@@ -1,4 +1,4 @@
-export function BookCoverSvg({ coverColor }: { coverColor: string }) {
+const BookCoverSvg = ({ coverColor }: { coverColor: string }) => {
   return (
     <svg
       preserveAspectRatio="none"
@@ -51,4 +51,6 @@ export function BookCoverSvg({ coverColor }: { coverColor: string }) {
       />
     </svg>
   );
-}
+};
+
+export { BookCoverSvg };
