@@ -48,7 +48,7 @@ const AuthForm = <T extends FieldValues>({
   const router = useRouter();
   const isSignIn = type === "SIGN_IN";
 
-  async function handleOnSubmit(data: T) {
+  const handleOnSubmit = async (data: T) => {
     const result = await onSubmit(data);
 
     if (result.success) {
@@ -65,7 +65,7 @@ const AuthForm = <T extends FieldValues>({
       description: String(result?.error ?? "An error occurred"),
       variant: "destructive",
     });
-  }
+  };
 
   return (
     <div className="flex flex-col gap-4">

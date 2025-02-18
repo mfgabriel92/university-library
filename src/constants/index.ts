@@ -18,8 +18,8 @@ export const navigationLinks: NavigationLink[] = [
   {
     img: "/icons/user.svg",
     selectedImg: "/icons/user-fill.svg",
-    href: "/my-profile",
-    label: "My Profile",
+    href: "/profile",
+    label: "Profile",
   },
 ];
 
@@ -54,8 +54,8 @@ export const adminSideBarLinks: AdminSideBarLink[] = [
 export const fieldNames: FieldNames = {
   name: "Name",
   email: "Email",
-  universityId: 1,
   password: "Password",
+  universityId: "University ID",
   universityCard: "Upload University ID Card",
 };
 

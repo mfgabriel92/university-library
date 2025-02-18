@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <main className="mx-auto max-w-7xl">
       <BookOverview book={sampleBooks[0]} />
-      <BookList books={sampleBooks} />
+      <BookList books={sampleBooks} title="Popular Books" />
     </main>
   );
 };

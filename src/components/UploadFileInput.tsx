@@ -7,7 +7,7 @@ import { IKUploadResponse } from "imagekitio-next/dist/types/components/IKUpload
 import config from "@/lib/config";
 import { toast } from "@/hooks/use-toast";
 
-async function authenticator() {
+const authenticator = async () => {
   try {
     const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
 
@@ -33,7 +33,7 @@ async function authenticator() {
 
     throw new Error("Error aunthenticating");
   }
-}
+};
 
 interface UploadFileInputProps {
   onFileChange: (filePath: string) => void;
@@ -45,28 +45,28 @@ const UploadFileInput = ({ onFileChange }: UploadFileInputProps) => {
 
   const { publicKey, urlEndpoint } = config.env.imageKit;
 
-  function onFileUploadClick() {
+  const onFileUploadClick = () => {
     if (ref?.current) {
       ref.current.click();
     }
-  }
+  };
 
-  function onSuccess(file: IKUploadResponse) {
+  const onSuccess = (file: IKUploadResponse) => {
     setFile(file);
     onFileChange(file.filePath);
     toast({
       title: "Image uploaded",
       description: `${file.filePath} uploaded successfully`,
     });
-  }
+  };
 
-  function onError() {
+  const onError = () => {
     toast({
       title: "Upload failed",
       description: `The file could not be uploaded`,
       variant: "destructive",
     });
-  }
+  };
 
   return (
     <ImageKitProvider

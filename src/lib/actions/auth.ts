@@ -7,9 +7,9 @@ import { AuthCredentials } from "@/types";
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 
-export async function signInWithCredentials(
+export const signInWithCredentials = async (
   params: Pick<AuthCredentials, "email" | "password">,
-) {
+) => {
   const { email, password } = params;
 
   try {
@@ -33,9 +33,9 @@ export async function signInWithCredentials(
       error,
     };
   }
-}
+};
 
-export async function signUp(params: AuthCredentials) {
+export const signUp = async (params: AuthCredentials) => {
   const { name, email, password, universityId, universityCard } = params;
 
   const existingUser = await db
@@ -71,4 +71,4 @@ export async function signUp(params: AuthCredentials) {
       error,
     };
   }
-}
+};

@@ -46,7 +46,7 @@ export interface FieldNames {
   name: string;
   email: string;
   password: string;
-  universityId: number;
+  universityId: string;
   universityCard: string;
 }
 
