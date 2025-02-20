@@ -2,8 +2,8 @@
 @plugin 'tailwindcss-animate';
 
 @theme {
-  --font-ibm-plex-sans: IBM Plex Sans, sans-serif;
-  --font-bebas-neue: var(--bebas-neue);
+  --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
+  --font-bebas-neue: "BebasNeue", sans-serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
