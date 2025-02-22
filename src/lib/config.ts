@@ -15,6 +15,7 @@ const config = {
       qstashCurrentSigningKey: process.env.UPSTASH_QSTASH_CURRENT_SIGNING_KEY!,
       qstashNextSigningKey: process.env.UPSTASH_QSTASH_NEXT_SIGNING_KEY!,
     },
+    resendToken: process.env.RESEND_TOKEN!,
   },
 };
 
