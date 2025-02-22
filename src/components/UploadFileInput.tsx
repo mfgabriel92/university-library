@@ -9,7 +9,7 @@ import { toast } from "@/hooks/use-toast";
 
 const authenticator = async () => {
   try {
-    const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
+    const response = await fetch(`${config.env.apiEndpoint}/api/imagekit`);
 
     if (!response.ok) {
       const error = await response.text();
